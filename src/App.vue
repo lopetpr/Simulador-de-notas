@@ -67,17 +67,10 @@ function resetAll() {
     <main class="courses">
       <CourseCard v-for="(c, i) in courses" :key="i" :course="c" />
     </main>
+    <footer class="footer">
+      <p class="footer__name">Huber Lope</p>
+      <p class="footer__sub">Simulador de promedios TECSUP</p>
+      <p class="footer__copy">© {{ new Date().getFullYear() }} Todos los derechos reservados</p>
+    </footer>
   </div>
-
-  <footer class="mt-10 border-t border-gray-200 py-6">
-    <div class="flex flex-col items-center justify-center gap-2 text-center">
-      <p class="text-lg font-semibold text-gray-800">Huber Lope</p>
-
-      <p class="text-sm text-gray-500">Simulador de promedios TECSUP</p>
-
-      <p class="text-xs text-gray-400">
-        © {{ new Date().getFullYear() }} Todos los derechos reservados
-      </p>
-    </div>
-  </footer>
 </template>

@@ -146,3 +146,16 @@ body {
 .card__final strong { font-size: 22px; }
 .card__final .ok { color: var(--ok); }
 .card__final .no { color: var(--no); }
+
+.footer {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.footer__name { margin: 0; font-size: 16px; font-weight: 600; color: var(--text); }
+.footer__sub { margin: 0; font-size: 13px; color: var(--muted); }
+.footer__copy { margin: 0; font-size: 12px; color: var(--muted); opacity: .7; }
