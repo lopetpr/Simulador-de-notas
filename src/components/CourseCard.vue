@@ -18,7 +18,7 @@ const theory = computed(() => theoryAverage(props.course.exams));
 const final = computed(() =>
   props.course.hasTheory ? finalAverage(lab.value, theory.value) : lab.value,
 );
-const passed = computed(() => final.value >= 11);
+const passed = computed(() => final.value >= 12.5);
 
 // Estado del curso: pendiente cuando no hay notas, aprobado/desaprobado si las hay.
 const hasInput = computed(
