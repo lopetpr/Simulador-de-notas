@@ -69,7 +69,15 @@ function resetAll() {
     </main>
   </div>
 
-  <footer>
-    <p class="text-lg font-bold">Huber Lope</p>
+  <footer class="mt-10 border-t border-gray-200 py-6">
+    <div class="flex flex-col items-center justify-center gap-2 text-center">
+      <p class="text-lg font-semibold text-gray-800">Huber Lope</p>
+
+      <p class="text-sm text-gray-500">Simulador de promedios TECSUP</p>
+
+      <p class="text-xs text-gray-400">
+        © {{ new Date().getFullYear() }} Todos los derechos reservados
+      </p>
+    </div>
   </footer>
 </template>
