@@ -61,17 +61,34 @@ body {
 }
 
 .card {
+  position: relative;
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 14px;
-  padding: 16px;
+  padding: 16px 16px 16px 19px;
+  overflow: hidden;
 }
+/* Franja de estado a la izquierda: firma visual de aprobado/desaprobado. */
+.card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--line);
+  transition: background .2s;
+}
+.card--pass::before { background: var(--ok); }
+.card--fail::before { background: var(--no); }
+
 .card__head {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: 10px 14px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
 }
 .card__name {
   background: transparent;
@@ -97,13 +114,16 @@ body {
 .toggle input { accent-color: var(--accent); cursor: pointer; }
 
 .badge {
-  font-size: 12px;
+  font-size: 11px;
   padding: 4px 10px;
   border-radius: 999px;
   font-weight: 600;
+  letter-spacing: .02em;
+  white-space: nowrap;
 }
-.badge--ok { background: rgba(34, 197, 94, .15); color: var(--ok); }
-.badge--no { background: rgba(239, 68, 68, .15); color: var(--no); }
+.badge--pending { background: rgba(148, 163, 184, .14); color: var(--muted); }
+.badge--pass { background: rgba(34, 197, 94, .15); color: var(--ok); }
+.badge--fail { background: rgba(239, 68, 68, .15); color: var(--no); }
 
 .grid {
   display: grid;
@@ -111,13 +131,14 @@ body {
   gap: 16px;
 }
 .grid--solo { grid-template-columns: 1fr; }
+.grid > * { min-width: 0; }
 @media (max-width: 520px) { .grid { grid-template-columns: 1fr; } }
 
 .block h3 { margin: 0 0 10px; font-size: 14px; }
 .block h3 small { color: var(--muted); font-weight: 400; }
 
 .labs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.field { display: flex; flex-direction: column; gap: 3px; }
+.field { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
 .field span { font-size: 11px; color: var(--muted); }
 .field em { color: var(--accent); font-style: normal; }
 .field input {
@@ -138,14 +159,23 @@ body {
   margin-top: 14px;
   padding-top: 12px;
   border-top: 1px solid var(--line);
-  font-size: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
 }
-.card__final strong { font-size: 22px; }
-.card__final .ok { color: var(--ok); }
-.card__final .no { color: var(--no); }
+.card__final-label { font-size: 14px; color: var(--muted); }
+.card__final-value { display: flex; align-items: center; gap: 12px; }
+.grade {
+  font-size: 26px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  min-width: 2ch;
+  text-align: right;
+}
+.grade--pending { color: var(--muted); }
+.grade--pass { color: var(--ok); }
+.grade--fail { color: var(--no); }
 
 .footer {
   margin-top: 48px;

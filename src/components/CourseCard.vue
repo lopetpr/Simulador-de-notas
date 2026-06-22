@@ -19,19 +19,32 @@ const final = computed(() =>
   props.course.hasTheory ? finalAverage(lab.value, theory.value) : lab.value,
 );
 const passed = computed(() => final.value >= 11);
+
+// Estado del curso: pendiente cuando no hay notas, aprobado/desaprobado si las hay.
+const hasInput = computed(
+  () =>
+    props.course.labs.some((g) => g > 0) ||
+    props.course.exams.some((g) => g > 0),
+);
+const status = computed(() =>
+  !hasInput.value ? "pending" : passed.value ? "pass" : "fail",
+);
+const statusLabel = computed(
+  () =>
+    ({ pending: "Pendiente", pass: "Aprobado", fail: "Desaprobado" })[
+      status.value
+    ],
+);
 </script>
 
 <template>
-  <section class="card">
+  <section class="card" :class="`card--${status}`">
     <header class="card__head">
       <input class="card__name" v-model="course.name" />
       <label class="toggle">
         <input type="checkbox" v-model="course.hasTheory" />
         <span>Con teoría</span>
       </label>
-      <span class="badge" :class="passed ? 'badge--ok' : 'badge--no'">
-        {{ passed ? "Aprobado" : "Desaprobado" }}
-      </span>
     </header>
 
     <div class="grid" :class="{ 'grid--solo': !course.hasTheory }">
@@ -84,8 +97,11 @@ const passed = computed(() => final.value >= 11);
     </div>
 
     <footer class="card__final">
-      Promedio final:
-      <strong :class="passed ? 'ok' : 'no'">{{ round2(final) }}</strong>
+      <span class="card__final-label">Promedio final</span>
+      <span class="card__final-value">
+        <span class="badge" :class="`badge--${status}`">{{ statusLabel }}</span>
+        <strong :class="`grade grade--${status}`">{{ round2(final) }}</strong>
+      </span>
     </footer>
   </section>
 </template>
