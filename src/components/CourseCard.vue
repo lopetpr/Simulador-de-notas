@@ -88,8 +88,4 @@ const passed = computed(() => final.value >= 11);
       <strong :class="passed ? 'ok' : 'no'">{{ round2(final) }}</strong>
     </footer>
   </section>
-
-  <footer>
-    <p class="text-lg font-bold">Huber Lope</p>
-  </footer>
 </template>
