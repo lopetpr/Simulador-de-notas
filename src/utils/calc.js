@@ -1,6 +1,7 @@
 // Pesos de laboratorio (en %). Suman 100.
 export const STD_LAB_WEIGHTS = [10, 10, 10, 10, 10, 10, 10, 30]   // cursos 1-6
 export const SPECIAL_LAB_WEIGHTS = [12, 12, 12, 12, 13, 13, 13, 13] // curso 7
+export const SPECIAL2_LAB_WEIGHTS = [11, 11, 11, 23, 11, 11, 11, 11] // curso 8
 
 export const LAB_FINAL_WEIGHT = 0.7
 export const THEORY_FINAL_WEIGHT = 0.3

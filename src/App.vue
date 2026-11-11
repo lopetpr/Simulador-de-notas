@@ -4,6 +4,7 @@ import CourseCard from "./components/CourseCard.vue";
 import {
   STD_LAB_WEIGHTS,
   SPECIAL_LAB_WEIGHTS,
+  SPECIAL2_LAB_WEIGHTS,
   labAverage,
   theoryAverage,
   finalAverage,
@@ -20,12 +21,13 @@ function makeCourse(name, weights) {
   };
 }
 
-// 6 cursos estándar + 1 especial (curso 7).
+// 6 cursos estándar + 2 especiales (cursos 7 y 8).
 const courses = reactive([
   ...Array.from({ length: 6 }, (_, i) =>
     makeCourse(`Curso ${i + 1}`, STD_LAB_WEIGHTS),
   ),
   makeCourse("Curso 7 (especial)", SPECIAL_LAB_WEIGHTS),
+  makeCourse("Curso 8 (especial)", SPECIAL2_LAB_WEIGHTS),
 ]);
 
 // Promedio final de cada curso, para el promedio general.
@@ -55,7 +57,7 @@ function resetAll() {
     <header class="top">
       <div>
         <h1>Promedios TECSUP</h1>
-        <p>Simulador de promedios — 7 cursos · notas base 20</p>
+        <p>Simulador de promedios — 8 cursos · notas base 20</p>
       </div>
       <div class="general">
         <span>Promedio general</span>
